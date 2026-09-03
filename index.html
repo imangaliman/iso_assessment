@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISO/IEC 27001:2022 ISMS Audit Schedule</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 5px; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #1f2937; }
+    .calendar { max-width: 1650px; margin: auto; overflow: hidden; background: #fff; border: 1px solid #dfe3e8; border-radius: 14px; box-shadow: 0 8px 25px rgb(0 0 0 / 6%); }
+    .calendar-header { padding: 25px 30px; border-bottom: 1px solid #e5e7eb; }
+    h1 { margin: 0; font-size: 30px; } .calendar-header p { margin: 7px 0 0; color: #6b7280; font-size: 14px; }
+    .month { padding-bottom: 24px; } .month + .month { border-top: 1px solid #dfe3e8; }
+    h2 { margin: 0; padding: 15px 20px; background: #f9fafb; border-bottom: 1px solid #e5e7eb; font-size: 18px; }
+    .weekdays, .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .weekday { padding: 14px 10px; color: #6b7280; background: #f9fafb; border-bottom: 1px solid #e5e7eb; font-size: 12px; font-weight: 700; text-align: center; }
+    .day { position: relative; min-height: 125px; padding: 10px; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; background: #fff; }
+    .day:nth-child(7n) { border-right: 0; } .other-month { background: #fafafa; } .other-month .day-number { color: #c5c9cf; }
+    .day-number { display: inline-block; margin-bottom: 8px; color: #6b7280; font-size: 13px; font-weight: 700; }
+    .event { display: block; margin: 0 0 6px; padding: 8px 9px; border-left: 4px solid #4285f4; border-radius: 7px; background: #eaf2ff; font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }
+    .event-title, .event-time, .event-description { display: block; } .event-title { font-weight: 700; } .event-time, .event-description { color: #4b5563; font-size: 11px; } .event-description { margin-top: 4px; }
+    .green { background: #eaf7ed; border-color: #34a853; } .blue { background: #eaf2ff; border-color: #4285f4; } .yellow { background: #fff8e1; border-color: #fbbc04; } .red { background: #fef2f2; border-color: #ea4335; } .gray { background: #f3f4f6; border-color: #9ca3af; }
+    /* A multi-day bar starts inside its first date cell and spans five calendar columns. */
+    .event.span-5 { position: absolute; z-index: 2; top: 35px; left: 10px; width: calc(500% - 20px); margin: 0; }
+    .legend { display: flex; flex-wrap: wrap; gap: 18px; padding: 16px 25px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; } .legend-dot { width: 10px; height: 10px; border-radius: 50%; } .legend-blue { background: #4285f4; } .legend-green { background: #34a853; }
+    @media (max-width: 800px) { body { padding: 10px; } .calendar { overflow-x: auto; } .weekdays, .days { min-width: 750px; } }
+    @media print { body { padding: 0; background: #fff; } .calendar { max-width: none; box-shadow: none; } }
+  </style>
+</head>
+<body>
+  <main class="calendar">
+    <header class="calendar-header"><h1>ISO/IEC 27001:2022 ISMS</h1><p>READINESS &amp; MATURITY ASSESSMENT COMELEC Main Office Units</p></header>
+    <section class="month" aria-labelledby="sep-title"><h2 id="sep-title">September 2026</h2><div class="weekdays" aria-hidden="true"><b>SUN</b><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b><b>SAT</b></div><div class="days" id="september"></div></section>
+    <section class="month" aria-labelledby="oct-title"><h2 id="oct-title">October 2026</h2><div class="weekdays" aria-hidden="true"><b>SUN</b><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b><b>SAT</b></div><div class="days" id="october"></div></section>
+    <!-- <footer class="legend"><span class="legend-item"><i class="legend-dot legend-blue"></i>Activity</span><span class="legend-item"><i class="legend-dot legend-green"></i>Session</span></footer> -->
+  </main>
+  <script>
+    // Add or edit schedule entries here. Dates use YYYY-MM-DD.
+    const events = {
+      '2026-09-04': [{ color: 'blue', title: 'Opening Meeting', time: '10:00 AM', description: 'Online MS Teams' }],
+      '2026-09-07': [{ color: 'gray', title: 'Coaching Sessions', time: '09:00 AM – 05:00 PM', description: 'IAD Conference Room, 4F ECJ Building, Intramuros Manila',span: 5 }],
+      '2026-09-29': [{ color: 'green', title: 'Administrative Services Department (ASD)', time: '09:00 AM – 05:00 PM', description: 'Cash, PrD, GSD, IRD, Lib'},],
+      '2026-09-30': [{ color: 'green', title: 'Personnel Department (PeD)', time: '09:00 AM – 05:00 PM', description: 'Personnel, Manpower, HSD' }],
+      '2026-10-02': [{ color: 'green', title: 'Education and Information Department (EID)', time: '09:00 AM – 2:00 PM', description: 'Information, PR' },
+                     { color: 'yellow', title: 'Protocol and Liaison Office (PLO)', time: '02:00 PM – 05:00 PM', description: '' }],
+      '2026-10-05': [{ color: 'green', title: 'Office of the Deputy Executive Director for Administration (ODEDA)', time: '09:00 AM – 2:00 PM', description: '' },
+                     { color: 'yellow', title: 'Office of the Deputy Executive Director for Operations (ODEDO)', time: '02:00 PM – 05:00 PM', description: '' }],
+      '2026-10-07': [{ color: 'green', title: 'Finance Services Department (FSD)', time: '09:00 AM – 05:00 PM', description: 'Budget , Acctg, VPD, DPD' }],
+      '2026-10-09': [{ color: 'green', title: 'Law Department (LawD)', time: '09:00 AM – 2:00 PM', description: 'Investigation & Prosecution, Legal Opinion & Research' },
+                     { color: 'yellow', title: 'Office of the COMELEC Secretary (COMSEC)', time: '02:00 PM – 05:00 PM', description: '' }],
+      '2026-10-12': [{ color: 'green', title: 'Planning Department (PlanD)', time: '09:00 AM – 2:00 PM', description: 'Planning & Programming ,Mgmt Systems Devt' },
+                     { color: 'yellow', title: 'Office of the Clerk of the Commission (OCOC)', time: '02:00 PM – 05:00 PM', description: '' }],
+      '2026-10-14': [{ color: 'green', title: 'Election and Barangay Affairs Department (EBAD)', time: '09:00 AM – 05:00 PM', description: 'Registration, Precinct' }],
+      '2026-10-16': [{ color: 'green', title: 'Election Records and Statistics Department (ERSD)', time: '09:00 AM – 05:00 PM', description: 'Records & Statistics, Natl Central File, Voters Identification' }],
+      '2026-10-19': [{ color: 'green', title: 'Procurement Management Department (PMD)', time: '09:00 AM – 05:00 PM', description: 'Procurement Planning & Mgmt, BAC Sec, Contract Mgmt' }],
+      '2026-10-21': [{ color: 'green', title: 'Election Contests Adjudication Department (ECAD)', time: '09:00 AM – 05:00 PM', description: 'First, Second, Judicial Records' }],
+      '2026-10-23': [{ color: 'green', title: 'Political Finance and Affairs Department (PFAD)', time: '09:00 AM – 11:00 AM', description: '' },
+                     { color: 'yellow', title: 'Standards and Innovations Office (SIO)', time: '11:00 AM – 02:00 PM', description: '' },
+                     { color: 'red', title: 'Internal Audit Department (IAD)', time: '02:00 PM – 05:00 PM', description: 'IAD-1, IAD-2' }],
+    };
+    const weekdayLabels = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    document.querySelectorAll('.weekdays').forEach(row => row.innerHTML = weekdayLabels.map(day => `<div class="weekday">${day}</div>`).join(''));
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function eventMarkup(event) { return `<div class="event ${event.color || 'blue'} ${event.span ? `span-${event.span}` : ''}"><span class="event-title">${event.title}</span>${event.time ? `<span class="event-time">${event.time}</span>` : ''}${event.description ? `<span class="event-description">${event.description}</span>` : ''}</div>`; }
+    function renderMonth(containerId, monthIndex) {
+      const container = document.getElementById(containerId), year = 2026;
+      const firstWeekday = new Date(year, monthIndex, 1).getDay();
+      const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+      const prevMonthDays = new Date(year, monthIndex, 0).getDate();
+      const cells = [];
+      for (let i = 0; i < firstWeekday; i++) cells.push({ day: prevMonthDays - firstWeekday + i + 1, other: true });
+      for (let day = 1; day <= daysInMonth; day++) cells.push({ day, other: false });
+      while (cells.length % 7) cells.push({ day: cells.length - firstWeekday - daysInMonth + 1, other: true });
+      container.innerHTML = cells.map(cell => {
+        const date = `${year}-${pad(monthIndex + 1)}-${pad(cell.day)}`;
+        return `<div class="day ${cell.other ? 'other-month' : ''}"><span class="day-number">${cell.day}</span>${cell.other ? '' : (events[date] || []).map(eventMarkup).join('')}</div>`;
+      }).join('');
+    }
+    renderMonth('september', 8); renderMonth('october', 9); 
+  </script>
+</body>
+</html>
